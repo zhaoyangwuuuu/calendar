@@ -15,4 +15,21 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+export const getEvents = async (): Promise<Event[]> => {
+  const response = await api.get("/events");
+  return response.data;
+};
+
+export const createEvent = async (eventData: any) => {
+  await api.post("/events", eventData);
+};
+
+export interface Event {
+  id: string;
+  title: string;
+  date: string; // Format: 'YYYY-MM-DD'
+  time: string; // Format: 'HH:mm'
+  description?: string;
+}
+
 export default api;

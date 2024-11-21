@@ -1,28 +1,29 @@
-import React, { useContext } from "react";
-import { Button } from "antd";
-import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Layout, Menu } from "antd";
+import { CalendarOutlined } from "@ant-design/icons";
+import CalendarComponent from "../components/Calendar";
+import "./styles/Dashboard.less";
+
+const { Content, Sider } = Layout;
 
 const Dashboard: React.FC = () => {
-  const { setAuthenticated } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    // Remove token from local storage
-    localStorage.removeItem("token");
-
-    setAuthenticated(false);
-
-    navigate("/login");
-  };
-
   return (
-    <div style={{ padding: "50px" }}>
-      <h2>Welcome to the Dashboard</h2>
-      <Button type='primary' onClick={handleLogout}>
-        Logout
-      </Button>
-    </div>
+    <Layout id='dashboard-layout'>
+      <Sider collapsible>
+        <div className='logo' />
+        <Menu theme='dark' mode='inline' defaultSelectedKeys={["calendar"]}>
+          <Menu.Item key='calendar' icon={<CalendarOutlined />}>
+            Calendar
+          </Menu.Item>
+        </Menu>
+      </Sider>
+
+      <Layout>
+        <Content>
+          <CalendarComponent />
+        </Content>
+      </Layout>
+    </Layout>
   );
 };
 
