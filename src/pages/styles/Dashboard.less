@@ -1,0 +1,54 @@
+@import '../../styles/variables.less';
+
+#dashboard-layout {
+  min-height: 100vh;
+  font-family: @font-family;
+
+  .sider {
+    background: @primary-color;
+
+    .logo {
+      height: 32px;
+      margin: 16px;
+      background: fade(@secondary-color, 30%);
+      border-radius: @border-radius-base;
+    }
+
+    .menu {
+      background: @primary-color;
+
+      .menu-item-selected {
+        background-color: lighten(@primary-color, 10%);
+      }
+
+      .menu-item {
+        color: #fff;
+
+        &:hover {
+          background-color: lighten(@primary-color, 5%);
+        }
+      }
+    }
+  }
+
+  .layout {
+    .header {
+      background: #fff;
+      padding: 0 @padding-base;
+
+      .btn {
+        float: right;
+        margin-top: @padding-base / 2;
+      }
+    }
+
+    .content {
+      margin: @margin-base;
+      padding: @padding-base;
+      background: #fff;
+      min-height: 280px;
+      box-shadow: @box-shadow-base;
+      border-radius: @border-radius-base;
+    }
+  }
+}
